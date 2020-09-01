@@ -4,9 +4,10 @@ import TodoList from './TodoList';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  // </React.StrictMode>
     <TodoList / >
-  </React.StrictMode>,
+  ,
   document.getElementById('root')
 );
 
