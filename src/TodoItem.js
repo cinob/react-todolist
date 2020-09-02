@@ -8,7 +8,12 @@ class TodoItem extends Component {
     this.handleDelete = this.handleDelete.bind(this)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.content !== this.props.content
+  }
+
   render() {
+    console.log('child render')
     const { content, test } = this.props
     return (
       <li
@@ -20,6 +25,16 @@ class TodoItem extends Component {
     // return React.createElement('li', {}, 'item')
   }
 
+  // 废弃
+  // componentWillReceiveProps() {
+  //   console.log('componentWillReceiveProps')
+  // }
+
+  // 卸载之前
+  // componentWillUnmount() {
+  //   console.log('child componentWillUnmount')
+  // }
+
   handleDelete() {
     const { handleItemDelete, index } = this.props
     handleItemDelete(index)
@@ -28,7 +43,7 @@ class TodoItem extends Component {
 
 TodoItem.propTypes = {
   test: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   deleteItem: PropTypes.func,
   index: PropTypes.number
 }
